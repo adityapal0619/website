@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Harshita ❤️</title>
+  <meta name="description" content="I made something for you…">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Local Jukebox Audio Player -->
+  <audio id="audio-player" src="backgrounds/jukebox.mp3" preload="auto"></audio>
+
+  <!-- Film Grain Overlay -->
+  <div id="film-grain"></div>
+
+  <!-- Vignette Overlay -->
+  <div id="vignette"></div>
+
+  <!-- Soft Light Leak Overlay (Visible in Love Mode) -->
+  <div id="light-leak"></div>
+
+  <!-- Dual Cinematic Backgrounds for Cross-fading -->
+  <div id="bg-wrapper">
+    <div id="bg-1" class="bg-layer active-bg"></div>
+    <div id="bg-2" class="bg-layer"></div>
+    <div id="bg-overlay"></div>
+  </div>
+
+  <!-- Dynamic Bokeh & Heart Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- INTRO SCREEN (Black overlay) -->
+  <div id="intro-screen" class="intro-active">
+    <div class="intro-container">
+      <div id="intro-text-1" class="intro-text">Hey Harshita...</div>
+      <div id="intro-text-2" class="intro-text">I made something for you.</div>
+      <div id="intro-text-3" class="intro-text">No special occasion.</div>
+      <div id="intro-text-4" class="intro-text">I just felt like making something for someone special. ❤️</div>
+      <div id="intro-text-5" class="intro-text">
+        <h1 class="intro-title-special">So… press play.</h1>
+        <button id="btn-enter-story" class="btn-primary btn-large">
+          START OUR PLAYLIST 🎵
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN WEBSITE CONTENT -->
+  <div id="main-content" class="content-hidden">
+    
+    <!-- Hero / Main Header -->
+    <header class="hero-section">
+      <div class="hero-content">
+        <span class="sub-title-main">For Harshita ❤️</span>
+        <h1 class="main-title">“I made something for you…”</h1>
+        <p class="hero-tagline">“20 songs. A lot of feelings. And one person who means a lot to me.”</p>
+        <button id="btn-hero-play" class="btn-primary btn-large btn-hero-glow">
+          Press Play ❤️
+        </button>
+        <div class="scroll-prompt">
+          <span class="prompt-text">Scroll down for playlist</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CLASSIC TRANSITION SCREEN -->
+    <div id="classic-transition" class="hidden">
+      <div class="transition-inner">
+        <p class="trans-text-1">And then there are songs...</p>
+        <p class="trans-text-2">that never really get old.</p>
+        <h1 class="trans-title">TIMELESS FEELINGS ❤️</h1>
+      </div>
+    </div>
+
+    <!-- MUSIC EXPERIENCE SECTION -->
+    <section class="section-container" id="music-section">
+      <div class="music-header">
+        <h2 class="section-heading">Songs Just For You ❤️</h2>
+        <p class="section-subheading">“Just press play and stay for a while.”</p>
+      </div>
+
+      <!-- PREMIUM MUSIC PLAYER -->
+      <div class="music-player-container">
+        <!-- Status Indicator Badge -->
+        <div id="player-status-badge" class="hidden-badge">Tap Play to start the music 🎵</div>
+
+        <div class="player-body glass-card">
+          <!-- Track Info / Song number indicator -->
+          <div class="player-top-meta">
+            <span class="song-counter-badge" id="song-number-badge">Song 01 / 20</span>
+          </div>
+
+          <!-- Artwork and Visualizer -->
+          <div class="player-visuals">
+            <div class="artwork-wrapper">
+              <div class="rotating-artwork" id="player-artwork">
+                <div class="vinyl-center"></div>
+              </div>
+            </div>
+            <canvas id="equalizer-canvas"></canvas>
+          </div>
+
+          <!-- Track Info & Caption -->
+          <div class="player-info">
+            <h3 class="track-title" id="player-track-title">Chand Sifarish</h3>
+            <p class="track-artist" id="player-track-artist">Fanaa</p>
+            <div class="caption-container">
+              <p class="track-caption" id="player-track-caption">“Some songs just feel like home.”</p>
+            </div>
+          </div>
+
+          <!-- Timeline Scrubber -->
+          <div class="player-timeline">
+            <span class="time-stamp" id="time-current">0:00</span>
+            <div class="progress-bar-wrapper" id="progress-container">
+              <div class="progress-bar-bg"></div>
+              <div class="progress-bar-fill" id="progress-fill"></div>
+              <div class="progress-knob" id="progress-knob"></div>
+            </div>
+            <span class="time-stamp" id="time-duration">0:00</span>
+          </div>
+
+          <!-- Controls panel -->
+          <div class="player-controls">
+            <button class="player-btn" id="btn-favorite" aria-label="Favorite song">
+              <svg class="icon-svg" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+
+            <button class="player-btn" id="btn-prev" aria-label="Previous song">
+              <svg class="icon-svg" viewBox="0 0 24 24">
+                <polygon points="19,20 9,12 19,4" />
+                <rect x="5" y="4" width="4" height="16" />
+              </svg>
+            </button>
+
+            <button class="player-btn btn-play-pause" id="btn-play" aria-label="Play or Pause">
+              <svg class="icon-svg play-icon" viewBox="0 0 24 24">
+                <polygon points="8,5 19,12 8,19" />
+              </svg>
+              <svg class="icon-svg pause-icon hidden" viewBox="0 0 24 24">
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            </button>
+
+            <button class="player-btn" id="btn-next" aria-label="Next song">
+              <svg class="icon-svg" viewBox="0 0 24 24">
+                <polygon points="5,4 15,12 5,20" />
+                <rect x="15" y="4" width="4" height="16" />
+              </svg>
+            </button>
+
+            <button class="player-btn" id="btn-playlist-toggle" aria-label="Open playlist">
+              <span class="btn-playlist-text">☰ Songs</span>
+            </button>
+          </div>
+
+          <!-- Volume elements -->
+          <div class="player-volume">
+            <button class="player-btn" id="btn-mute" aria-label="Mute or Unmute">
+              <svg class="icon-svg" id="volume-icon" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+              </svg>
+            </button>
+            <div class="volume-slider-wrapper" id="volume-container">
+              <div class="volume-slider-bg"></div>
+              <div class="volume-slider-fill" id="volume-fill"></div>
+              <input type="range" id="volume-range" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
+            </div>
+          </div>
+
+          <!-- Love Mode Toggle Button -->
+          <div class="love-mode-control">
+            <button id="btn-love-mode" class="btn-love-mode">❤️ Love Mode</button>
+          </div>
+
+          <!-- Subtle Relationship Reference -->
+          <div class="subtle-ref-quote">
+            “Somehow, after all these years, you still make me smile.” ❤️
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAYLIST BOTTOM-SHEET / DRAWER -->
+      <div id="playlist-sheet" class="playlist-hidden">
+        <div id="playlist-sheet-overlay"></div>
+        <div class="playlist-sheet-content glass-card">
+          <div class="playlist-sheet-header">
+            <h3>Our Little Playlist</h3>
+            <button id="btn-playlist-close" aria-label="Close playlist">
+              <svg class="icon-svg" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+          <div class="playlist-subsections">
+            <div class="playlist-section-title">Modern Romantic Hits</div>
+            <div class="playlist-items" id="playlist-modern-container"></div>
+
+            <div class="playlist-section-title classics-divider">Our Classics</div>
+            <div class="playlist-items" id="playlist-classics-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAL MESSAGE SECTION -->
+    <section class="section-container" id="personal-message-section">
+      <div class="glass-card message-card">
+        <h2 class="message-heading">Harshita, One Little Thing… ❤️</h2>
+        <div class="message-content">
+          <p class="message-paragraph">“I didn't make this because today is some special day.”</p>
+          <p class="message-paragraph">“I made it because sometimes you don't need a reason to remind someone how special they are.”</p>
+          <p class="message-paragraph">“Seven years is a lot of memories.”</p>
+          <p class="message-paragraph">“A lot of conversations.”</p>
+          <p class="message-paragraph">“A lot of laughter.”</p>
+          <p class="message-paragraph">“A few arguments too 😅.”</p>
+          <p class="message-paragraph">“And somehow, through all of it, you're still someone I want in my life.”</p>
+          
+          <h3 class="message-footer">“So yeah… this little website is just for you.” ❤️</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL SURPRISE SCREEN -->
+    <div id="surprise-screen" class="surprise-hidden">
+      <div class="surprise-container">
+        <div id="surprise-text-area">
+          <!-- Populated line by line by script -->
+        </div>
+        <div id="surprise-action-area" class="hidden">
+          <button id="btn-replay-story" class="btn-primary btn-large btn-hero-glow">
+            PLAY IT AGAIN ❤️
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EASTER EGG ELEMENTS -->
+    <!-- Heart Icon in corner -->
+    <div id="easter-egg-trigger" aria-label="A tiny heart">❤️</div>
+
+    <!-- Easter Egg Modal Dialog -->
+    <div id="easter-egg-modal" class="modal-hidden">
+      <div class="modal-overlay" id="easter-egg-overlay"></div>
+      <div class="modal-content glass-card">
+        <h2>7 clicks. Coincidence? I don't think so. ❤️</h2>
+        <p class="modal-body-text">Here's to all the memories we've already made… and all the random ones still waiting for us.</p>
+        <div class="pulsing-heart-wrapper">
+          <canvas id="egg-heart-canvas"></canvas>
+        </div>
+        <button id="btn-close-egg" class="btn-primary">Close ❤️</button>
+      </div>
+    </div>
+
+    <!-- Premium Cinematic Footer -->
+    <footer class="cinematic-footer">
+      <p>Made with love for Harshita Singh</p>
+      <p class="footer-note">Somehow, after all these years, you still make me smile. ❤️</p>
+    </footer>
+
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
